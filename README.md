@@ -4,9 +4,9 @@
 
 [![Documentation Status](https://readthedocs.org/projects/django-vendor/badge/?version=latest)](https://django-vendor.readthedocs.io/en/latest/?badge=latest)
 
-# Django Vendor
+# Django Barter
 
-Django App Toolkit for selling digital and physical goods online.
+Django App Toolkit for selling digital and physical goods online to distributers 
 
 The philosophy is "Cart to Receipt".  What you put in the cart and what you do after the purchase is up to you.  The app is opinionated within scope.
 
@@ -14,6 +14,9 @@ Goals of the project:
 - Drop in to existing Django Sites without requiring changes to how Django works (flow, not fight)
 - Handle everything from the point of starting a purchase, until payment is complete.
 - BYOPM, Bring Your Own Product Model.  Subclass your Product Model off of our base model and add whatever you want.  You are responsible for things like Catalogs and Presenting products to the user, we handle the purchasing of the products and generate a receipt you can look for.
+- Chains Prices to Customer Profiles to define price points for especific customers.
+
+NOTE: This is a forked project form rendorbox/django-vendor repo. The intent of this project make the sutle differences of adding different price rules to differente Client Distribuiters. 
 
 
 ## For Developers
