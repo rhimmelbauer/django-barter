@@ -4,8 +4,8 @@ from django.test import TestCase, Client, override_settings
 from django.urls import reverse
 from django.conf import settings
 
-from vendor.models import Offer, Price, Invoice, OrderItem, Receipt, CustomerProfile, Payment
-from vendor.forms import BillingAddressForm, CreditCardForm
+from barter.models import Offer, Price, Invoice, OrderItem, Receipt, CustomerProfile, Payment
+from barter.forms import BillingAddressForm, CreditCardForm
 
 User = get_user_model()
 
@@ -138,7 +138,7 @@ class CartViewTests(TestCase):
         self.mug_offer = Offer.objects.get(pk=4)
         self.shirt_offer = Offer.objects.get(pk=1)
 
-        self.cart_url = reverse('vendor:cart')
+        self.cart_url = reverse('barter:cart')
 
     def test_view_cart_status_code(self):
         response = self.client.get(self.cart_url)
@@ -164,11 +164,11 @@ class CartViewTests(TestCase):
         response = self.client.get(self.cart_url)
         self.assertContains(response, f'<span class="text-primary">${self.invoice.total}</span>')
 
-        add_mug_url = reverse("vendor:add-to-cart", kwargs={'slug': self.mug_offer.slug})
+        add_mug_url = reverse("barter:add-to-cart", kwargs={'slug': self.mug_offer.slug})
         self.client.post(add_mug_url)
         self.assertContains(response, f'<span class="text-primary">${self.invoice.total}</span>')
 
-        remove_shirt_url = reverse("vendor:remove-from-cart", kwargs={'slug': self.shirt_offer.slug})
+        remove_shirt_url = reverse("barter:remove-from-cart", kwargs={'slug': self.shirt_offer.slug})
         self.assertContains(response, f'<span class="text-primary">${self.invoice.total}</span>')
     
     # def test_view_displays_login_instead_checkout(self):
@@ -183,7 +183,7 @@ class AccountInformationViewTests(TestCase):
         self.client = Client()
         self.user = User.objects.get(pk=1)
         self.client.force_login(self.user)
-        self.view_url = reverse('vendor:checkout-account')
+        self.view_url = reverse('barter:checkout-account')
         self.invoice = Invoice.objects.get(pk=1)
 
     def test_view_status_code_200(self):
@@ -217,7 +217,7 @@ class PaymentViewTests(TestCase):
         self.client = Client()
         self.user = User.objects.get(pk=1)
         self.client.force_login(self.user)
-        self.view_url = reverse('vendor:checkout-payment')
+        self.view_url = reverse('barter:checkout-payment')
         self.invoice = Invoice.objects.get(pk=1)
 
     def test_view_status_code_200(self):
@@ -251,7 +251,7 @@ class ReviewCheckoutViewTests(TestCase):
         self.client = Client()
         self.user = User.objects.get(pk=1)
         self.client.force_login(self.user)
-        self.view_url = reverse('vendor:checkout-review')
+        self.view_url = reverse('barter:checkout-review')
         self.invoice = Invoice.objects.get(pk=1)
 
     def test_view_status_code_200(self):
@@ -277,7 +277,7 @@ class ReviewCheckoutViewTests(TestCase):
 
         response = self.client.post(self.view_url)
 
-        self.assertRedirects(response, reverse('vendor:checkout-account'))
+        self.assertRedirects(response, reverse('barter:checkout-account'))
 
     def test_view_payment_success(self):
         self.invoice.status = Invoice.InvoiceStatus.CHECKOUT
@@ -328,7 +328,7 @@ class PaymentSummaryViewTests(TestCase):
         self.user = User.objects.get(pk=1)
         self.client.force_login(self.user)
         self.invoice = Invoice.objects.get(pk=1)
-        self.view_url = reverse('vendor:purchase-summary', kwargs={'uuid': self.invoice.uuid})
+        self.view_url = reverse('barter:purchase-summary', kwargs={'uuid': self.invoice.uuid})
 
     def test_view_status_code_200(self):
         response = self.client.get(self.view_url)

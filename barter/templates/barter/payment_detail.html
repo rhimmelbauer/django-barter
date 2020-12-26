@@ -1,0 +1,7 @@
+{% extends "barter/base.html" %}
+{% load i18n %}
+
+{% block barter_content %}
+<h2>{% trans 'PURCHASE DETAILS' %}</h2>
+{% trans 'Invoice' %}: {{ object.pk }}
+{% endblock %}

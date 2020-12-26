@@ -1,13 +1,13 @@
 # --------------------------------------------
-# Copyright 2019, Grant Viklund
-# @Author: Grant Viklund
-# @Date:   2019-07-22 18:25:42
+# Copyright 2020, Roberto Himmelbauer
+# @Author: Roberto Himmelbauer
+# @Date:   2020-12-26 07:41:42
 # --------------------------------------------
 
 from os import path
 from setuptools import setup, find_packages
 
-from vendor.__version__ import VERSION
+from barter.__version__ import VERSION
 
 readme_file = path.join(path.dirname(path.abspath(__file__)), 'README.md')
 
@@ -21,13 +21,13 @@ except ImportError:
 
 
 package_metadata = {
-    'name': 'django-vendor',
+    'name': 'django-barter',
     'version': VERSION,
     'description': 'Django App Toolkit for selling digital and physical goods online.',
     'long_description': long_description,
-    'url': 'https://github.com/renderbox/django-vendor/',
+    'url': 'https://github.com/rhimmelbauer/django-barter/',
     'author': 'Grant Viklund, Roberto Himmelbauer',
-    'author_email': 'renderbox@gmail.com',
+    'author_email': 'robertoh89@gmail.com',
     'license': 'MIT license',
     'classifiers': [
         'Development Status :: 2 - Pre-Alpha',
@@ -41,7 +41,7 @@ package_metadata = {
 
 setup(
     packages=find_packages(),
-    package_data={'vendor': ['templates/vendor/*.html', 'templates/vendor/*/*.html']},
+    package_data={'barter': ['templates/barter/*.html', 'templates/barter/*/*.html']},
     include_package_data=True,
     python_requires=">=3.6",
     install_requires=[

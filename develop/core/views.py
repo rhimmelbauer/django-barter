@@ -5,12 +5,12 @@ from django.utils import timezone
 from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 
-from vendor.models import Offer, Payment
-from vendor.views.mixin import ProductRequiredMixin
-from vendor.forms import CreditCardForm
-from vendor.models.choice import PurchaseStatus, TermType, PaymentTypes
+from barter.models import Offer, Payment
+from barter.views.mixin import ProductRequiredMixin
+from barter.forms import CreditCardForm
+from barter.models.choice import PurchaseStatus, TermType, PaymentTypes
 
-class VendorIndexView(ListView):
+class BarterIndexView(ListView):
     template_name = "core/index.html"
     model = Offer
     queryset = Offer.on_site_active.all()

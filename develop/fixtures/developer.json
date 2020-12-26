@@ -86,9 +86,9 @@
         "updated": "2020-06-30T02:33:35.109Z",
         "sku": null,
         "uuid": "def0d4f5-fd8f-1aa4-b25a-c043a846a732",
-        "name": "Vendor Licence",
+        "name": "Barter Licence",
         "site": 1,
-        "slug": "vendor-licence",
+        "slug": "barter-licence",
         "available": true,
         "description": "",
         "meta": { "msrp": { "default": "usd", "usd":112.99 }},
@@ -121,7 +121,7 @@
     }
 },
 {
-    "model": "vendor.invoice",
+    "model": "barter.invoice",
     "pk": 1,
     "fields": {
         "created": "2020-06-30T01:20:01.616Z",
@@ -131,7 +131,7 @@
         "site": 1,
         "status": 0,
         "customer_notes": "",
-        "vendor_notes": "",
+        "barter_notes": "",
         "ordered_date": null,
         "subtotal": 309.97,
         "tax": 0.0,
@@ -142,7 +142,7 @@
     }
 },
 {
-    "model": "vendor.orderitem",
+    "model": "barter.orderitem",
     "pk": 2,
     "fields": {
         "created": "2020-06-30T02:38:46.707Z",
@@ -153,7 +153,7 @@
     }
 },
 {
-    "model": "vendor.orderitem",
+    "model": "barter.orderitem",
     "pk": 3,
     "fields": {
         "created": "2020-06-30T03:01:12.555Z",
@@ -164,7 +164,7 @@
     }
 },
 {
-    "model": "vendor.orderitem",
+    "model": "barter.orderitem",
     "pk": 5,
     "fields": {
         "created": "2020-07-01T05:32:28.668Z",
@@ -175,7 +175,7 @@
     }
 },
 {
-    "model": "vendor.customerprofile",
+    "model": "barter.customerprofile",
     "pk": 1,
     "fields": {
         "created": "2020-06-30T01:15:00.350Z",
@@ -186,7 +186,7 @@
     }
 },
 {
-    "model": "vendor.offer",
+    "model": "barter.offer",
     "pk": 1,
     "fields": {
         "created": "2020-06-30T00:54:47.106Z",
@@ -206,7 +206,7 @@
     }
 },
 {
-    "model": "vendor.offer",
+    "model": "barter.offer",
     "pk": 2,
     "fields": {
         "created": "2020-06-30T02:34:41.313Z",
@@ -226,7 +226,7 @@
     }
 },
 {
-    "model": "vendor.offer",
+    "model": "barter.offer",
     "pk": 3,
     "fields": {
         "created": "2020-06-30T02:38:17.762Z",
@@ -246,15 +246,15 @@
     }
 },
 {
-    "model": "vendor.offer",
+    "model": "barter.offer",
     "pk": 4,
     "fields": {
         "created": "2020-06-30T02:38:17.762Z",
         "updated": "2020-06-30T02:38:35.045Z",
         "uuid": "ceda0d8a-0ddf-440b-8804-eddc2800479b",
-        "slug": "vendor-month",
+        "slug": "barter-month",
         "site": 1,
-        "name": "Vendor Month Subscription",
+        "name": "Barter Month Subscription",
         "start_date": "2020-06-30T02:38:16Z",
         "end_date": null,
         "terms": 101,
@@ -268,7 +268,7 @@
     }
 },
 {
-    "model": "vendor.offer",
+    "model": "barter.offer",
     "pk": 5,
     "fields": {
         "created": "2020-06-30T02:38:17.762Z",
@@ -290,7 +290,7 @@
     }
 },
 {
-    "model": "vendor.price",
+    "model": "barter.price",
     "pk": 1,
     "fields": {
         "offer": 1,
@@ -302,7 +302,7 @@
     }
 },
 {
-    "model": "vendor.price",
+    "model": "barter.price",
     "pk": 2,
     "fields": {
         "offer": 2,
@@ -314,7 +314,7 @@
     }
 },
 {
-    "model": "vendor.price",
+    "model": "barter.price",
     "pk": 3,
     "fields": {
         "offer": 3,

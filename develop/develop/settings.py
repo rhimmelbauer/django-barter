@@ -14,7 +14,7 @@ from pathlib import Path
 import dj_database_url
 from iso4217 import Currency
 
-from vendor.__version__ import VERSION
+from barter.__version__ import VERSION
 from django.utils.translation import ugettext_lazy as _
 
 BUILD_VERSION = VERSION
@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'iso4217',
-    'vendor'
+    'barter'
 ]
 
 MIDDLEWARE = [
@@ -170,10 +170,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-# Django Vendor Settings
-VENDOR_PRODUCT_MODEL = 'core.Product'
-VENDOR_PAYMENT_PROCESSOR = os.getenv("VENDOR_PAYMENT_PROCESSOR", "base.PaymentProcessorBase")
-VENDOR_STATE = os.getenv("VENDOR_STATE", "DEBUG")
+# Django Barter Settings
+BARTER_PRODUCT_MODEL = 'core.Product'
+BARTER_PAYMENT_PROCESSOR = os.getenv("BARTER_PAYMENT_PROCESSOR", "base.PaymentProcessorBase")
+BARTER_STATE = os.getenv("BARTER_STATE", "DEBUG")
 DEFAULT_CURRENCY = Currency.usd.name
 AVAILABLE_CURRENCIES = {'usd': _('USD Dollars'), 'mxn': _('Mexican peso'), 'jpy': _('Japanese yen')}
 

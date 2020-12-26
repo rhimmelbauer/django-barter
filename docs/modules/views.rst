@@ -1,6 +1,6 @@
 Views
 =====
 
-.. automodule:: vendor.views
+.. automodule:: barter.views
    :members:
    :undoc-members:

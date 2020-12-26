@@ -4,7 +4,7 @@ from django.test import TestCase, Client
 from django.urls import reverse
 from django.utils import timezone
 from core.models import Product
-from vendor.models import Offer, Price, OrderItem
+from barter.models import Offer, Price, OrderItem
 
 
 class ModelOfferTests(TestCase):
@@ -156,9 +156,9 @@ class ViewOfferTests(TestCase):
         self.mug_offer = Offer.objects.get(pk=4)
         self.shirt_offer = Offer.objects.get(pk=1)
 
-        self.offers_list_uri = reverse('vendor_admin:manager-offer-list')
-        self.offer_create_uri = reverse('vendor_admin:manager-offer-create')
-        self.offer_update_uri = reverse('vendor_admin:manager-offer-update', kwargs={'uuid': self.mug_offer.uuid})
+        self.offers_list_uri = reverse('barter_admin:manager-offer-list')
+        self.offer_create_uri = reverse('barter_admin:manager-offer-create')
+        self.offer_update_uri = reverse('barter_admin:manager-offer-update', kwargs={'uuid': self.mug_offer.uuid})
 
     def test_offers_list_status_code_success(self):
         response = self.client.get(self.offers_list_uri)
@@ -224,7 +224,7 @@ class ViewOfferTests(TestCase):
         response = self.client.post(url)
 
         self.assertEquals(response.status_code, 302)
-        self.assertEquals(response.url, reverse('vendor:cart'))
+        self.assertEquals(response.url, reverse('barter:cart'))
         
     
     def test_check_remove_from_cart_link_request(self):
@@ -233,7 +233,7 @@ class ViewOfferTests(TestCase):
         response = self.client.post(url)
 
         self.assertEquals(response.status_code, 302)
-        self.assertEquals(response.url, reverse('vendor:cart'))
+        self.assertEquals(response.url, reverse('barter:cart'))
     
 
     # def test_view_only_available_offers(self):

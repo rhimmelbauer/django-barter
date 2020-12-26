@@ -4,7 +4,7 @@ from django.contrib.sites.models import Site
 from django.contrib.sites.managers import CurrentSiteManager
 from django.conf import settings
 
-from vendor.models.base import ProductModelBase
+from barter.models.base import ProductModelBase
 
 ##########
 # CATALOG

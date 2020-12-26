@@ -6,7 +6,7 @@ from django.test import TestCase, Client
 from django.urls import reverse
 from iso4217 import Currency
 
-from vendor.models import generate_sku, validate_msrp_format, validate_msrp
+from barter.models import generate_sku, validate_msrp_format, validate_msrp
 
 from core.models import Product
 
@@ -128,9 +128,9 @@ class ViewsProductTests(TestCase):
     def setUp(self):
         self.product = Product.objects.get(pk=1)
 
-        self.products_list_uri = reverse('vendor_admin:manager-product-list')
-        self.product_create_uri = reverse('vendor_admin:manager-product-create')
-        self.product_update_uri = reverse('vendor_admin:manager-product-update', kwargs={'uuid': self.product.uuid})
+        self.products_list_uri = reverse('barter_admin:manager-product-list')
+        self.product_create_uri = reverse('barter_admin:manager-product-create')
+        self.product_update_uri = reverse('barter_admin:manager-product-update', kwargs={'uuid': self.product.uuid})
 
 
         self.client = Client()

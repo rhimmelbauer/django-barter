@@ -5,7 +5,7 @@ from django.urls import reverse
 
 from core.models import Product
 
-from vendor.models import Offer, Price, Invoice, OrderItem, Receipt, CustomerProfile
+from barter.models import Offer, Price, Invoice, OrderItem, Receipt, CustomerProfile
 
 
 

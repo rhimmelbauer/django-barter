@@ -1,6 +1,6 @@
 Models
 ======
 
-.. automodule:: vendor.models
+.. automodule:: barter.models
    :members:
    :undoc-members:

@@ -12,7 +12,7 @@
             <div class="col-12 col-md-6">
                 <h4>{% trans 'Billing' %}</h4>
                 {% comment %}
-                <!-- TODO: Added Saved Payments when django-vendor saves Payment gateway profile id for every user -->
+                <!-- TODO: Added Saved Payments when django-barter saves Payment gateway profile id for every user -->
                 <div class="d-flex justify-content-between align-items-end">
                     <div>
                         <div class="font-weight-bold">{% trans 'Payment Method' %}</div>
@@ -29,7 +29,7 @@
                         {% endif %}
                     </div>
                     <a class="edit-name-button btn text-primary p-0"
-                        href="{% url 'vendor:subscription-cancel' subscription.uuid %}"><i class="fas fa-pen"></i></a>
+                        href="{% url 'barter:subscription-cancel' subscription.uuid %}"><i class="fas fa-pen"></i></a>
                     <a class="edit-name-button btn text-primary p-0" href="{% url 'core-account-edit' 'billing' %}"><i
                             class="fas fa-pen"></i></a>
                 </div>
@@ -44,7 +44,7 @@
                     </div>
                     {% comment %}
                     <a class="edit-name-button btn text-primary p-0"
-                        href="{% url 'vendor:shipping-update' payment.billing_address.pk 'billing' %}"><i
+                        href="{% url 'barter:shipping-update' payment.billing_address.pk 'billing' %}"><i
                             class="fas fa-pen"></i></a>
                     <a class="edit-name-button btn text-primary p-0" href="{% url 'core-account-edit' 'billing' %}"><i
                             class="fas fa-pen"></i></a>
@@ -122,7 +122,7 @@
                 <div class='d-flex flex-row w-100 align-items-center my-3'>
                     {% comment %}
                     <form id="changeSubscription" class="align-itmes-center" method="post"
-                        action="{% url 'vendor:customer-subscription-change-plan' subscription.uuid %}">
+                        action="{% url 'barter:customer-subscription-change-plan' subscription.uuid %}">
                         {% csrf_token %}
                         <button class="btn btn-sm btn-primary" type="submit">{% trans 'Change Subscription' %}</button>
                     </form>
@@ -130,7 +130,7 @@
                     <button id="changeSubscription" class="btn btn-sm btn-primary" type="button" data-toggle="modal"
                         data-target="#update_subscription">{% trans 'Change Subscription' %}</button>
                     <form id="cancelSubscription" class="align-itmes-center" method="post"
-                        action="{% url 'vendor:customer-subscription-cancel' subscription.uuid %}">
+                        action="{% url 'barter:customer-subscription-cancel' subscription.uuid %}">
                         {% csrf_token %}
                         <button class="btn btn-sm btn-primary" type="submit">{% trans 'Cancel Subscription' %}</button>
                     </form>
@@ -146,7 +146,7 @@
                 <h3>{% trans 'Update Payment Method' %}</h3>
                 <div class='d-flex flex-column flex-grow w-100'>
                     <form method="POST"
-                        action="{% url 'vendor:customer-subscription-update-payment' subscription.uuid %}">
+                        action="{% url 'barter:customer-subscription-update-payment' subscription.uuid %}">
                         {% csrf_token %}
                         {{ payment_form }}
                         <button class="btn btn-primary mt-3">{% trans 'Update' %}</button>
@@ -185,7 +185,7 @@
                                 <td>{{ payment.transaction|default_if_none:payment.invoice.pk }}</td>
                                 <td>$ {{ payment.amount|floatformat:2|default_if_none:"$0.00" }}</td>
                                 <td><a
-                                        href="{% url 'vendor:purchase-summary' payment.invoice.uuid %}">{% trans 'Invoice' %}</a>
+                                        href="{% url 'barter:purchase-summary' payment.invoice.uuid %}">{% trans 'Invoice' %}</a>
                                 </td>
                             </tr>
                             {% empty %}

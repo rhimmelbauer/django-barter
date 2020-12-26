@@ -1,6 +1,6 @@
 [
     {
-        "model": "vendor.address",
+        "model": "barter.address",
         "pk": 1,
         "fields": {
             "name": "Home",

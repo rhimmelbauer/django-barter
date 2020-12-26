@@ -1,9 +1,3 @@
-![Django Vendor CI](https://github.com/renderbox/django-vendor/workflows/Django%20Vendor%20CI/badge.svg?branch=master)
-
-![Django Vendor Develop](https://github.com/renderbox/django-vendor/workflows/Django%20Vendor%20Develop/badge.svg?branch=develop)
-
-[![Documentation Status](https://readthedocs.org/projects/django-vendor/badge/?version=latest)](https://django-vendor.readthedocs.io/en/latest/?badge=latest)
-
 # Django Barter
 
 Django App Toolkit for selling digital and physical goods online to distributers 
@@ -77,7 +71,7 @@ to dump unit test data
 The install process
 1) Add the app to your project
 2) Create your Product model that inherits from the ProductModelBase base class.
-3) Change the settings.py value for VENDOR_PRODUCT_MODEL to point to your model
+3) Change the settings.py value for BARTER_PRODUCT_MODEL to point to your model
 4) Make migrations
 5) Migrate
 

@@ -14,7 +14,7 @@ import os
 import sys
 import django
 
-from vendor.__version__ import VERSION
+from barter.__version__ import VERSION
 
 sys.path.insert(0, os.path.abspath('../develop'))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'develop.settings'
@@ -23,7 +23,7 @@ django.setup()
 
 # -- Project information -----------------------------------------------------
 
-project = 'Django Vendor'
+project = 'Django Barter'
 copyright = '2020, Grant Viklund/Whitemoon Labs'
 author = 'Grant Viklund, Roberto Himmelbauer'
 
