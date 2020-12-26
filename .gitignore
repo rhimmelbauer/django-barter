@@ -106,3 +106,6 @@ venv.bak/
 build_notes.txt
 settings.json
 develop.json
+
+# VS Code
+.vscode/
