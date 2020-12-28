@@ -2,9 +2,16 @@ import uuid
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+from barter.models.choice import PaymentTypes
+
 ##########
 # PAYMENT
 ##########
+
+class BankAccount(models.Model):
+    name = models.CharField(verbose_name=_("Bank Account"), max_length=60)
+    details = models.TextField(verbose_name=_("Account Details"))
+
 
 class Payment(models.Model):
     '''
@@ -16,6 +23,8 @@ class Payment(models.Model):
     '''
     uuid = models.UUIDField(_("UUID"), editable=False, unique=True, default=uuid.uuid4, null=False, blank=False)
     invoice = models.ForeignKey("barter.Invoice", verbose_name=_("Invoice"), on_delete=models.CASCADE, related_name="payments")
+    bank_account = models.ForeignKey("barter.BankAccount", verbose_name=_("Bank Account"), null=True, blank=True, on_delete=models.CASCADE, related_name="bank_accounts")
+    payment_type = models.IntegerField(verbose_name=_("Payment Type"), choices=PaymentTypes.choices, default=PaymentTypes.CASH)
     created = models.DateTimeField(_("Date Created"), auto_now_add=True)
     transaction = models.CharField(_("Transaction ID"), max_length=50)
     provider = models.CharField(_("Payment Provider"), max_length=30)

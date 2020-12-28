@@ -33,6 +33,7 @@ class PaymentTypes(models.IntegerChoices):
     BANK_ACCOUNT = 20, _('Bank Account')
     PAY_PAL = 30, _('Pay Pal')
     MOBILE = 40, _('Mobile')
+    CASH = 50, _('Cash')
 
 
 class TransactionTypes(models.IntegerChoices):

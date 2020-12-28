@@ -33,21 +33,26 @@ class Invoice(CreateUpdateModelBase):
         COMPLETE = 50, _("Complete")    # Payment Processor Completed Transaction.
         REFUNDED = 60, _("Refunded")    # Invoice Refunded to client. 
 
+    class PaymentStatus(models.IntegerChoices):
+        PENDING = 0, _("Pending")
+        PARTIAL = 10, _("Partial Payment")
+        SETTLED = 20, _("Invoice Setteled")
+
+
     uuid = models.UUIDField(_("UUID"), default=uuid.uuid4, editable=False, unique=True)
     profile = models.ForeignKey("barter.CustomerProfile", verbose_name=_("Customer Profile"), null=True, on_delete=models.CASCADE, related_name="invoices")     # TODO: [GK-3029] remove null=True.  This should not be allowed.
     site = models.ForeignKey(Site, verbose_name=_("Site"), on_delete=models.CASCADE, default=set_default_site_id, related_name="invoices")                      # For multi-site support
     status = models.IntegerField(_("Status"), choices=InvoiceStatus.choices, default=InvoiceStatus.CART)
-    customer_notes = models.JSONField(_("Customer Notes"), default=dict, blank=True, null=True)
-    barter_notes = models.JSONField(_("Barter Notes"), default=dict, blank=True, null=True)
-    ordered_date = models.DateTimeField(_("Ordered Date"), blank=True, null=True)               # When was the purchase made?
+    payment_status = models.IntegerField(verbose_name=_("Payment Status"), choices=PaymentStatus.choices, default=PaymentStatus.PENDING)
+    customer_notes = models.JSONField(verbose_name=_("Customer Notes"), default=dict, blank=True, null=True)
+    barter_notes = models.JSONField(verbose_name=_("Barter Notes"), default=dict, blank=True, null=True)
     subtotal = models.FloatField(default=0.0)                                   
     tax = models.FloatField(blank=True, null=True)                              # Set on checkout
     shipping = models.FloatField(blank=True, null=True)                         # Set on checkout
     total = models.FloatField(blank=True, null=True)                            # Set on purchase
     currency = models.CharField(_("Currency"), max_length=4, choices=CURRENCY_CHOICES, default=DEFAULT_CURRENCY)      # User's default currency
     shipping_address = models.ForeignKey("barter.Address", verbose_name=_("Shipping Address"), on_delete=models.CASCADE, blank=True, null=True)
-    # paid = models.BooleanField(_("Paid"))                 # May be Useful for quick filtering on invoices that are outstanding
-    # settle_date = models.DateTimeField(_("Settle Date"))
+    date_delivered = models.DateTimeField(verbose_name=_("Date Delivered"))
 
     objects = models.Manager()
     on_site = CurrentSiteManager()

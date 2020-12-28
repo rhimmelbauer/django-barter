@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static %}
+{% load account %}
+
+
+{% block content %}
+<div class='d-flex flex-column justify-content-center h-100 w-100'>
+    <div class="w-100 text-center my-5">
+        <h2>Kombucha Login</h2>
+    </div>
+    <div class="w-100 text-center">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</div>
+{% endblock %}

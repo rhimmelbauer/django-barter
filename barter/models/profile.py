@@ -22,8 +22,12 @@ class CustomerProfile(CreateUpdateModelBase):
     This is what the Invoices are attached to.  This is abstracted from the user model directly do it can be mre flexible in the future.
     '''
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_("User"), null=True, on_delete=models.SET_NULL, related_name="customer_profile")
+    company = models.CharField(verbose_name=_("Company Name"), max_length=90)ß
     currency = models.CharField(_("Currency"), max_length=4, choices=CURRENCY_CHOICES,default=DEFAULT_CURRENCY)      # User's default currency
     site = models.ForeignKey(Site, verbose_name=_("Site"), on_delete=models.CASCADE, default=set_default_site_id, related_name="customer_profile")                      # For multi-site support
+    payment_type = models.IntegerField(verbose_name=_("Default Payment Type For Customer"), choices=PaymentTypes.choices, default=PaymentTypes.CASH)
+    tax = models.BooleanField(verbose_name=_("Tax Customer"), default=False)
+    register_invoice = models.BooleanField(verbose_name=_("Those Client Require A Registered Invoice"), default=False)
 
     objects = models.Manager()
     on_site = CurrentSiteManager()
@@ -35,10 +39,10 @@ class CustomerProfile(CreateUpdateModelBase):
     def __str__(self):
         if not self.user:
             return "New Customer Profile"
-        return "{username} Customer Profile".format(username=self.user.username)
+        return self.company
 
     def get_customer_profile_display(self):
-        return str(self.user.username) + _("Customer Profile")
+        return self.company
 
     def revert_invoice_to_cart(self):
         cart = self.invoices.get(status=Invoice.InvoiceStatus.CHECKOUT)

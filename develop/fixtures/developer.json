@@ -294,6 +294,7 @@
     "pk": 1,
     "fields": {
         "offer": 1,
+        "customer_profile": 1,
         "cost": 19.99,
         "currency": "usd",
         "start_date": "2020-06-30T00:55:21Z",
@@ -306,6 +307,7 @@
     "pk": 2,
     "fields": {
         "offer": 2,
+        "customer_profile": 1,
         "cost": 75.0,
         "currency": "jpy",
         "start_date": "2020-06-30T02:34:56Z",
@@ -318,6 +320,7 @@
     "pk": 3,
     "fields": {
         "offer": 3,
+        "customer_profile": 1,
         "cost": 25.0,
         "currency": "484",
         "start_date": "2020-06-30T02:38:30Z",

@@ -11,6 +11,7 @@ from barter.config import DEFAULT_CURRENCY
 
 class Price(models.Model):
     offer = models.ForeignKey("barter.Offer", verbose_name=_("Offer"), on_delete=models.CASCADE, related_name="prices")
+    customer_profile = models.ForeignKey("barter.CustomerProfile", verbose_name=_("Customer Profile"), on_delete=models.CASCADE, related_name="customer_prices")
     cost = models.FloatField(_("Cost"), blank=True, null=True)
     currency = models.CharField(_("Currency"), max_length=4, choices=CURRENCY_CHOICES, default=DEFAULT_CURRENCY)
     start_date = models.DateTimeField(_("Start Date"), help_text=_("When should the price first become available?"))
