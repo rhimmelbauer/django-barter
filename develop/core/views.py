@@ -7,7 +7,6 @@ from django.views.generic.list import ListView
 
 from barter.models import Offer, Payment
 from barter.views.mixin import ProductRequiredMixin
-from barter.forms import CreditCardForm
 from barter.models.choice import PurchaseStatus, TermType, PaymentTypes
 
 class BarterIndexView(ListView):

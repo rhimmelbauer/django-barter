@@ -6,7 +6,7 @@ from django.db.models import Q, QuerySet
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from .base import CreateUpdateModelBase
-from .choice import CURRENCY_CHOICES, TermType
+from .choice import CURRENCY_CHOICES, TermType, PaymentTypes
 from .invoice import Invoice
 from .utils import set_default_site_id
 from barter.config import DEFAULT_CURRENCY
@@ -22,7 +22,7 @@ class CustomerProfile(CreateUpdateModelBase):
     This is what the Invoices are attached to.  This is abstracted from the user model directly do it can be mre flexible in the future.
     '''
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_("User"), null=True, on_delete=models.SET_NULL, related_name="customer_profile")
-    company = models.CharField(verbose_name=_("Company Name"), max_length=90)ß
+    company = models.CharField(verbose_name=_("Company Name"), max_length=90)
     currency = models.CharField(_("Currency"), max_length=4, choices=CURRENCY_CHOICES,default=DEFAULT_CURRENCY)      # User's default currency
     site = models.ForeignKey(Site, verbose_name=_("Site"), on_delete=models.CASCADE, default=set_default_site_id, related_name="customer_profile")                      # For multi-site support
     payment_type = models.IntegerField(verbose_name=_("Default Payment Type For Customer"), choices=PaymentTypes.choices, default=PaymentTypes.CASH)

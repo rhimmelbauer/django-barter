@@ -18,7 +18,6 @@ from django.http import HttpResponse
 from barter.models import Offer, OrderItem, Invoice, Payment, Address
 from barter.models.address import Address as GoogleAddress
 from barter.processors import PaymentProcessor
-from barter.forms import BillingAddressForm, CreditCardForm
 
 from .barter_admin import AdminDashboardView, AdminInvoiceDetailView, AdminInvoiceListView
 
